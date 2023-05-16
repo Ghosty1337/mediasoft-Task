@@ -39,6 +39,30 @@ def main():
     print(sort_by_second_array([1, 4, 6], [11, 33, 22]))
     print(similar_letters(["bella", "label", "roller"]))
     print(similar_letters(["cool", "lock", "cook"]))
+    print(roman_number_to_int("MCMXCIVIX"))
+
+
+def roman_number_to_int(roman_number: str):
+    checks = {
+        "IV": 2,
+        "IX": 2,
+        "XL": 20,
+        "XC": 20,
+        "CD": 200,
+        "CM": 200
+    }
+    values = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+    }
+    number = sum(values[char] for char in roman_number)
+    number -= sum(value for key, value in checks.items() if key in roman_number)
+    return number
 
 
 if __name__ == "__main__":
